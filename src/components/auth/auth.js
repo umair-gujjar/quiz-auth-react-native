@@ -23,7 +23,7 @@ export default class Auth extends Component {
         firebaseAPI.auth().onAuthStateChanged((user) => {
             if (user) {
                 console.log('this is user', user);
-
+                this.props.navigation.navigate('Topics')
                 // save user data and navigate to main page
             }
         })

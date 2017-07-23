@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Auth from '../components/auth/auth';
 import Signup from '../components/auth/signup';
+import Topics from '../components/auth/topics';
 
 export const Router = StackNavigator({
     Auth: {
@@ -17,5 +18,11 @@ export const Router = StackNavigator({
         navigationOptions: ({navigation}) => ({
             title: 'Sing Up'
         }),
+    },
+    Topics: {
+        screen: Topics,
+        navigationOptions: ({navigation}) => ({
+            title: 'Topics'
+        })
     }
 });
