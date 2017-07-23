@@ -1,6 +1,11 @@
 import React from 'react';
+import {
+    Text,
+    TouchableOpacity
+} from 'react-native';
 
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, NavigationActions } from 'react-navigation';
+import { firebaseAPI } from '../components/auth/authentication';
 
 import Auth from '../components/auth/auth';
 import Signup from '../components/auth/signup';
@@ -22,7 +27,23 @@ export const Router = StackNavigator({
     Topics: {
         screen: Topics,
         navigationOptions: ({navigation}) => ({
-            title: 'Topics'
+            title: 'Topics',
+            headerRight: (
+                <TouchableOpacity
+                    onPress={() => {
+                        firebaseAPI.auth().signOut().then(() => {
+                            navigation.dispatch(NavigationActions.reset({
+                                index: 0,
+                                actions: [NavigationActions.navigate({routeName: 'Auth'})]
+                            }))
+                        }, (err) => console.log('ERORR: ', err))
+                    }}
+                    style={{'marginRight': 10}}>
+                    <Text>
+                        Log out
+                    </Text>
+                </TouchableOpacity>
+            )
         })
     }
 });
