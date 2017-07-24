@@ -34,5 +34,13 @@ export const defaultStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.black,
         borderRadius: 5
+    },
+    links: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 5
+    },
+    link: {
+        color: 'blue'
     }
 });

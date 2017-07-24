@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import { firebaseAPI } from './authentication';
+import { defaultStyles } from './defaultStyles';
 
 export default class Auth extends Component {
     constructor(props) {
@@ -69,17 +70,18 @@ export default class Auth extends Component {
                         Submit
                     </Text>
                 </TouchableOpacity>
-                <View style={styles.links}>
+                <View style={defaultStyles.links}>
                     <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('ResetPassword')}
                     >
-                        <Text style={styles.link}>
+                        <Text style={defaultStyles.link}>
                             Forgot you password?
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => this.onForgetPassword()}
                     >
-                    <Text style={styles.link}>
+                    <Text style={defaultStyles.link}>
                             Sign Up
                         </Text>
                     </TouchableOpacity>
@@ -116,12 +118,4 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 5
     },
-    links: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 5
-    },
-    link: {
-        color: 'blue'
-    }
 });

@@ -12,6 +12,7 @@ import Signup from '../components/auth/signup';
 import Topics from '../components/auth/topics';
 import ChooseUserName from '../components/auth/chooseusername';
 import TopicDetails from '../components/auth/topicDetails';
+import ResetPassword from '../components/auth/resetPassword';
 
 export const Router = StackNavigator({
     Auth: {
@@ -55,6 +56,12 @@ export const Router = StackNavigator({
         screen: TopicDetails,
         navigationOptions: ({navigation}) => ({
             title: 'Topic Details'
+        })
+    },
+    ResetPassword: {
+        screen: ResetPassword,
+        navigationOptions: ({navigation}) => ({
+            title: 'Reset Password'
         })
     }
 });
