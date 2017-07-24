@@ -5,10 +5,13 @@ export const colors = {
     black: 'black',
     blue: 'blue',
     main: 'white',
-    secondery: 'grey'
+    secondary: 'grey'
 };
 
 export const defaultStyles = StyleSheet.create({
+    wideContainer: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         justifyContent: 'center',

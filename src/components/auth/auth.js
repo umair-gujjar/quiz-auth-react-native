@@ -48,12 +48,14 @@ export default class Auth extends Component {
                     {this.state.result}
                 </Text>
                 <TextInput
+                    underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder='Email'
                     style={styles.input}
                     onChangeText={(input) => this.setState({email: input.toLowerCase()})}
                 />
 
                 <TextInput
+                    underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder='Password'
                     style={styles.input}
                     secureTextEntry={true}

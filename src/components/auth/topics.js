@@ -4,7 +4,8 @@ import {
     View,
     StyleSheet,
     ListView,
-    TextInput
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 
 import { colors, defaultStyles } from './defaultStyles';
@@ -18,6 +19,7 @@ export default class Topics extends Component {
         super(props);
         this.state = {
             userName: '',
+            topicInput: '',
             dataSource: ds.cloneWithRows([])
         }
     }
@@ -38,23 +40,49 @@ export default class Topics extends Component {
             snapshot.forEach(topic => {
                 topics.push({
                     title: topic.val().title,
-                    author: topic.val().author
+                    author: topic.val().author,
+                    key: topic.key
                 })
             });
             this.setState({dataSource: ds.cloneWithRows(topics)});
         })
     }
 
+    addTopic() {
+        if (this.state.topicInput === '') {
+            alert('You can\'t send an empty topic, you just can\'t');
+            return;
+        }
+
+        topicsRef.push({
+            title: this.state.topicInput,
+            author: this.state.userName,
+        });
+
+        this.setState({topicInput: ''})
+    }
+
+    goToDetails(data) {
+        this.props.navigation.navigate('TopicDetails', {
+            title: data.title,
+            author: data.author,
+            userName: this.state.userName,
+            rowUid: data.key,
+        })
+    }
+
     renderRow(rowData) {
         return(
-            <View style={styles.topicWrapper}>
+            <TouchableOpacity
+                onPress={() => this.goToDetails(rowData)}
+                style={styles.topicWrapper}>
                 <Text style={styles.topicTitle}>
                     {rowData.title}
                 </Text>
                 <Text style={styles.topicAuthor}>
                     {rowData.author}
                 </Text>
-            </View>
+            </TouchableOpacity>
         )
     }
 
@@ -62,8 +90,13 @@ export default class Topics extends Component {
         return(
             <View>
                 <TextInput
+                    underlineColorAndroid='rgba(0,0,0,0)'
+                    value={this.state.topicInput}
+                    controlled={true}
                     placeholder='add your topic'
                     style={defaultStyles.input}
+                    onChangeText={(input) => this.setState({topicInput: input})}
+                    onEndEditing={() => this.addTopic()}
                 />
 
                 <ListView

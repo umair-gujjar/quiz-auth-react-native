@@ -40,18 +40,21 @@ export default class Signup extends Component {
                     {this.state.result}
                 </Text>
                 <TextInput
+                    underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder='Email'
                     style={styles.input}
                     onChangeText={(input) => this.setState({email: input.toLowerCase()})}
                 />
 
                 <TextInput
+                    underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder='Password'
                     style={styles.input}
                     secureTextEntry={true}
                     onChangeText={(input) => this.setState({password: input})}
                 />
                 <TextInput
+                    underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder='Confirm Password'
                     style={styles.input}
                     secureTextEntry={true}
