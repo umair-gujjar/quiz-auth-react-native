@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Text,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
 
 import { StackNavigator, NavigationActions } from 'react-navigation';
@@ -10,6 +10,7 @@ import { firebaseAPI } from '../components/auth/authentication';
 import Auth from '../components/auth/auth';
 import Signup from '../components/auth/signup';
 import Topics from '../components/auth/topics';
+import ChooseUserName from '../components/auth/chooseusername';
 
 export const Router = StackNavigator({
     Auth: {
@@ -45,5 +46,8 @@ export const Router = StackNavigator({
                 </TouchableOpacity>
             )
         })
+    },
+    ChooseUserName: {
+        screen: ChooseUserName
     }
 });

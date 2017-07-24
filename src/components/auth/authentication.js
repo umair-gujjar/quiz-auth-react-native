@@ -11,5 +11,6 @@ const config = {
 };
 
 export const firebaseAPI =   firebase.initializeApp(config);
+export const topicsRef = firebase.database().ref();
 
 
